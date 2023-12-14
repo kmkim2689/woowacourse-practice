@@ -11,7 +11,7 @@ class RecommendationManager(
         RecommendationResult(it.name, recommendedMenus)
     }
 
-    fun getRecommendedMenusForCoach(coachInfo: CoachInfo): List<String> {
+    private fun getRecommendedMenusForCoach(coachInfo: CoachInfo): List<String> {
         val recommendedMenus = ArrayList<String>()
         weekdayCategories.onEach {
             val menus = Category.getMenuByCategoryName(it)

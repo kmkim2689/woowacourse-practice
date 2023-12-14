@@ -2,6 +2,7 @@ package menu.constant
 
 object Constants {
     const val INPUT_SEPARATOR = ","
+    const val OUTPUT_SEPARATOR = "|"
 
     const val INPUT_NAME_MIN_LEN = 2
     const val INPUT_NAME_MAX_LEN = 4
@@ -21,6 +22,11 @@ object Constants {
     const val NUM_OF_WEEKDAYS = 5
 
     const val MAX_CATEGORY_FREQUENCY = 2
+
+    const val BRACKET_OPEN = "["
+    const val BRACKET_CLOSE = "]"
+
+    const val TITLE_CATEGORY = "카테고리"
 
     val japaneseMenus = listOf(
         "규동",
