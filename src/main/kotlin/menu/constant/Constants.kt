@@ -11,9 +11,16 @@ object Constants {
 
     const val MAX_UNAVAILABLE_NUM = 2
 
-    val categories = listOf(
-        "", "일식", "한식", "중식", "아시안", "양식"
-    )
+    const val CATEGORY_DUMMY = ""
+    const val CATEGORY_JAPANESE = "일식"
+    const val CATEGORY_KOREAN = "한식"
+    const val CATEGORY_CHINESE = "중식"
+    const val CATEGORY_ASIAN = "아시안"
+    const val CATEGORY_WESTERN = "양식"
+
+    const val NUM_OF_WEEKDAYS = 5
+
+    const val MAX_CATEGORY_FREQUENCY = 2
 
     val japaneseMenus = listOf(
         "규동",
