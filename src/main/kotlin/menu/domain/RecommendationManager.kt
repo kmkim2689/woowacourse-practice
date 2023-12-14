@@ -6,6 +6,11 @@ class RecommendationManager(
     private val coachesInfo: List<CoachInfo>,
     private val weekdayCategories: List<String>
 ) {
+    fun getRecommendMenuResult(): List<RecommendationResult> = coachesInfo.map {
+        val recommendedMenus = getRecommendedMenusForCoach(it)
+        RecommendationResult(it.name, recommendedMenus)
+    }
+
     fun getRecommendedMenusForCoach(coachInfo: CoachInfo): List<String> {
         val recommendedMenus = ArrayList<String>()
         weekdayCategories.onEach {
@@ -21,7 +26,6 @@ class RecommendationManager(
         coachInfo: CoachInfo,
         currentMenus: List<String>
     ): String {
-
         val selectedMenu = Randoms.shuffle(menus)[0]
         if (selectedMenu in currentMenus ||
             selectedMenu in coachInfo.unavailableMenus) {
@@ -30,6 +34,4 @@ class RecommendationManager(
 
         return selectedMenu
     }
-
-
 }
