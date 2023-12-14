@@ -1,11 +1,11 @@
 package menu.util
 
+import menu.constant.Constants
 import menu.constant.Constants.INPUT_NAME_MAX_LEN
 import menu.constant.Constants.INPUT_NAME_MIN_LEN
 import menu.constant.Constants.INPUT_SEPARATOR
 import menu.constant.Constants.MAX_COACH_NUM
 import menu.constant.Constants.MAX_UNAVAILABLE_NUM
-import menu.constant.Constants.MENUS
 import menu.constant.Constants.MIN_COACH_NUM
 import menu.constant.ExceptionMessages.EXCEPTION_LEN_COACH_NAME
 import menu.constant.ExceptionMessages.EXCEPTION_MAX_NUM_COACHES
@@ -30,7 +30,7 @@ fun String.toMenuListOrThrowIllegalArgumentException(): List<String> {
     val menus = this.split(INPUT_SEPARATOR)
     if (menus.size > MAX_UNAVAILABLE_NUM) throw IllegalArgumentException(EXCEPTION_UNAVAILABLE_MAX_SIZE)
     menus.onEach {
-        if (it !in MENUS) throw IllegalArgumentException(EXCEPTION_UNAVAILABLE_NOT_EXISTS)
+        if (it !in Constants.menus) throw IllegalArgumentException(EXCEPTION_UNAVAILABLE_NOT_EXISTS)
     }
 
     return menus
