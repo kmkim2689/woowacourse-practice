@@ -15,9 +15,9 @@ object InputView {
     fun getUnavailableMenu(coachNames: List<String>): List<List<String>> = getValidatedUnavailableMenus(coachNames)
 
     private fun getValidatedCoachNames(): List<String> = try {
-        // TODO controller에 넣기 : println(STEP_START_RECOMMENDATION)
         println(STEP_INPUT_NAMES)
         val coachNames = Console.readLine().trim()
+        println()
         coachNames.toNameListOrThrowIllegalArgumentException()
     } catch (e: IllegalArgumentException) {
         println(getErrorMessage(e.message))
@@ -33,6 +33,7 @@ object InputView {
     private fun getValidatedUnavailableMenusForCoach(coachName: String): List<String> = try {
         println("$coachName$STEP_UNAVAILABLE_MENU")
         val unavailableMenus = Console.readLine().trim()
+        println()
         unavailableMenus.toMenuListOrThrowIllegalArgumentException()
     } catch (e: IllegalArgumentException) {
         println(getErrorMessage(e.message))

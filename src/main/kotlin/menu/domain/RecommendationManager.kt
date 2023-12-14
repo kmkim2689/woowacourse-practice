@@ -6,20 +6,34 @@ class RecommendationManager(
     private val coachesInfo: List<CoachInfo>,
     private val weekdayCategories: List<String>
 ) {
-    fun getRecommendMenuResult(): List<RecommendationResult> = coachesInfo.map {
-        val recommendedMenus = getRecommendedMenusForCoach(it)
-        RecommendationResult(it.name, recommendedMenus)
+
+    val recommendationResult = ArrayList<WeekdayResult>()
+
+    fun getRecommendMenuResult(): List<RecommendationResult> {
+        val recommendedMenusForAllCoaches = ArrayList<RecommendationResult>()
+        coachesInfo.onEach {
+            recommendedMenusForAllCoaches.add(RecommendationResult(it.name, mutableListOf()))
+        }
+        weekdayCategories.onEach { weekdayCategory ->
+            val menus = Category.getMenuByCategoryName(weekdayCategory)
+            recommendedMenusForAllCoaches.zip(coachesInfo) { currentResult, coachInfo ->
+                currentResult.recommendation.add(pickMenu(menus!!, coachInfo, currentResult.recommendation))
+            }
+        }
+        return recommendedMenusForAllCoaches
     }
 
-    private fun getRecommendedMenusForCoach(coachInfo: CoachInfo): List<String> {
-        val recommendedMenus = ArrayList<String>()
+/*
+    private fun getRecommendedMenusForCoach(coachInfo: CoachInfo): String {
+
         weekdayCategories.onEach {
-            val menus = Category.getMenuByCategoryName(it)
+
             recommendedMenus.add(pickMenu(menus!!, coachInfo, recommendedMenus))
         }
 
         return recommendedMenus
     }
+*/
 
     private fun pickMenu(
         menus: List<String>,

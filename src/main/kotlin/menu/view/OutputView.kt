@@ -13,6 +13,8 @@ object OutputView {
         println(STEP_RESULT_TITLE)
         println(STEP_WEEKDAY)
         printWeekdayCategories(weekdayCategories)
+        printRecommendationResult(result)
+        println()
     }
 
     private fun printWeekdayCategories(weekdayCategories: List<String>) {
@@ -21,5 +23,15 @@ object OutputView {
             print("$OUTPUT_SEPARATOR $it ")
         }
         println(BRACKET_CLOSE)
+    }
+
+    private fun printRecommendationResult(result: List<RecommendationResult>) {
+        result.onEach { item ->
+            print("$BRACKET_OPEN ${item.name} ")
+            item.recommendation.onEach {
+                print("$OUTPUT_SEPARATOR $it ")
+            }
+            println(BRACKET_CLOSE)
+        }
     }
 }

@@ -1,5 +1,7 @@
 package menu
 
-fun main() {
+import menu.controller.RecommendationController
 
+fun main() {
+    RecommendationController.startRecommendation()
 }
