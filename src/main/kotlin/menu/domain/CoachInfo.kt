@@ -1,3 +1,6 @@
 package menu.domain
 
-data class CoachInfo()
+data class CoachInfo(
+    val name: String,
+    val unavailableMenus: List<String>
+)
